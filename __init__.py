@@ -1,0 +1,1 @@
+from walnut.run import main
