@@ -21,7 +21,7 @@ securePlace.mkdir(parents=True, exist_ok=True)
 session = []
 
 MAX_FILE_LIMIT = 25 * 1024 * 1024
-RUN_EVERY_SECONDS = 3
+RUN_EVERY_SECONDS = 15 * 60
 
 
 @alru_cache(maxsize=64)
@@ -148,6 +148,7 @@ async def _main():
 
 
 def main():
+    print("here-3")
     asyncio.run(_main())
 
 

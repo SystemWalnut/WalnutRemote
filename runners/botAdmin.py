@@ -39,6 +39,7 @@ async def startup(self):
 
 
 def main() -> None:
+    print("here-2")
     application = (
         Application.builder()
         .token(env["ADMIN_TELEGRAM_BOT_TOKEN"])

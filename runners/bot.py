@@ -80,6 +80,7 @@ async def startup(self):
 
 
 def main() -> None:
+    print("here-1")
     application = Application.builder().token(env["BASE_TELEGRAM_BOT_TOKEN"]).build()
 
     application.post_init = startup
