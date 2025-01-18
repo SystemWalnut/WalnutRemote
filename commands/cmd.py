@@ -4,8 +4,7 @@ from command_runner import command_runner_threaded
 from telegram import Update
 from telegram.constants import ParseMode
 
-from walnut.utilities import parse_command
-from walnut.utilities import escape_markdown
+from walnut.utilities import escape_markdown, parse_command
 
 
 async def cmd(update: Update, context) -> None:

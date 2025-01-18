@@ -40,10 +40,10 @@ async def mouse_(update: Update, context) -> None:
             time.sleep(durationGap)
         await success()
     elif action == "move":
-        mouse.move(* await split_in_numbers(combination, 2), duration=0.5)
+        mouse.move(*await split_in_numbers(combination, 2), duration=0.5)
         await success()
     elif action == "drag":
-        mouse.drag(* await split_in_numbers(combination, 4), duration=0.5)
+        mouse.drag(*await split_in_numbers(combination, 4), duration=0.5)
         await success()
     elif action == "position":
         mouseX, mouseY = mouse.get_position()

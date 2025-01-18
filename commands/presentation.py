@@ -21,6 +21,8 @@ async def presentation(update: Update, context) -> None:
                     document=pptFile,
                     caption=f"> {caption}",
                     parse_mode=ParseMode.MARKDOWN_V2,
+                    read_timeout=360,
+                    write_timeout=360,
                 )
         except Exception:
             errorOccurred = True
