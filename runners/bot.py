@@ -1,12 +1,12 @@
 import datetime
 import hashlib
+import time
 from collections import defaultdict
 from io import BytesIO
 
 import pyotp
 from PIL import ImageGrab
 from telegram import Update
-import time
 from telegram.ext import Application, CommandHandler
 
 from walnut.env import env
@@ -40,7 +40,7 @@ async def start(update: Update, context):
 
 async def screenshot(update: Update, context) -> None:
     currentTime = time.time()
-    
+
     if not update.message.from_user.id in session:
         userHash = hashlib.md5(str(update.message.from_user.id).encode()).hexdigest()
         userHashFile = db.joinpath(userHash)
@@ -57,7 +57,7 @@ async def screenshot(update: Update, context) -> None:
                 _userHashFile.write(str(currentTime))
 
     if (currentTime - coolDown[update.message.from_user.id]) < 5:
-        await update.message.reply_markdown_v2('> CoolDown: try after few seconds\\.')
+        await update.message.reply_markdown_v2("> CoolDown: try after few seconds\\.")
         return None
 
     try:
@@ -74,8 +74,10 @@ async def screenshot(update: Update, context) -> None:
     except Exception:
         await update.message.set_reaction(["👎"])
 
+
 async def startup(self):
-    await self.bot.sendMessage(int(env["DEVELOPER_TELEGRAM_ID"]), '#systemOnline')
+    await self.bot.sendMessage(int(env["DEVELOPER_TELEGRAM_ID"]), "#systemOnline")
+
 
 def main() -> None:
     application = Application.builder().token(env["BASE_TELEGRAM_BOT_TOKEN"]).build()
